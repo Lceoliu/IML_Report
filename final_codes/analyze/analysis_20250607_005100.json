@@ -1,0 +1,257 @@
+[
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01787424087524414,
+        "timestamp": "2025-06-07T00:51:11.812089"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012264251708984375,
+        "timestamp": "2025-06-07T00:51:11.845263"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.014212369918823242,
+        "timestamp": "2025-06-07T00:51:11.881830"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01418614387512207,
+        "timestamp": "2025-06-07T00:51:11.917698"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012655496597290039,
+        "timestamp": "2025-06-07T00:51:11.954757"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013583183288574219,
+        "timestamp": "2025-06-07T00:51:11.989498"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013878345489501953,
+        "timestamp": "2025-06-07T00:51:12.024780"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.014263391494750977,
+        "timestamp": "2025-06-07T00:51:12.061540"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013589143753051758,
+        "timestamp": "2025-06-07T00:51:12.097142"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013985157012939453,
+        "timestamp": "2025-06-07T00:51:12.136638"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01449275016784668,
+        "timestamp": "2025-06-07T00:51:12.173338"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.016061782836914062,
+        "timestamp": "2025-06-07T00:51:12.206624"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012231826782226562,
+        "timestamp": "2025-06-07T00:51:12.240993"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.011697530746459961,
+        "timestamp": "2025-06-07T00:51:12.273631"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01566767692565918,
+        "timestamp": "2025-06-07T00:51:12.308108"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.014877080917358398,
+        "timestamp": "2025-06-07T00:51:12.343741"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.011042356491088867,
+        "timestamp": "2025-06-07T00:51:12.375671"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01487112045288086,
+        "timestamp": "2025-06-07T00:51:12.408863"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.011962652206420898,
+        "timestamp": "2025-06-07T00:51:12.442652"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012017488479614258,
+        "timestamp": "2025-06-07T00:51:12.476496"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013448715209960938,
+        "timestamp": "2025-06-07T00:51:12.507547"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013208389282226562,
+        "timestamp": "2025-06-07T00:51:12.553450"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012902021408081055,
+        "timestamp": "2025-06-07T00:51:12.590537"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01317286491394043,
+        "timestamp": "2025-06-07T00:51:12.622246"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012479305267333984,
+        "timestamp": "2025-06-07T00:51:12.659064"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.011956453323364258,
+        "timestamp": "2025-06-07T00:51:12.691971"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012320280075073242,
+        "timestamp": "2025-06-07T00:51:12.721817"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012043476104736328,
+        "timestamp": "2025-06-07T00:51:12.754832"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.011738777160644531,
+        "timestamp": "2025-06-07T00:51:12.789207"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.014164924621582031,
+        "timestamp": "2025-06-07T00:51:12.837013"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01718592643737793,
+        "timestamp": "2025-06-07T00:51:12.875920"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.012869834899902344,
+        "timestamp": "2025-06-07T00:51:12.908548"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.014545679092407227,
+        "timestamp": "2025-06-07T00:51:12.944417"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.015984535217285156,
+        "timestamp": "2025-06-07T00:51:13.010707"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.022259235382080078,
+        "timestamp": "2025-06-07T00:51:13.074212"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.016022682189941406,
+        "timestamp": "2025-06-07T00:51:13.130529"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013073205947875977,
+        "timestamp": "2025-06-07T00:51:13.183647"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.015096187591552734,
+        "timestamp": "2025-06-07T00:51:13.239647"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01555776596069336,
+        "timestamp": "2025-06-07T00:51:13.301277"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01354670524597168,
+        "timestamp": "2025-06-07T00:51:13.351944"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01734757423400879,
+        "timestamp": "2025-06-07T00:51:13.406738"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.013629913330078125,
+        "timestamp": "2025-06-07T00:51:13.458012"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.015697717666625977,
+        "timestamp": "2025-06-07T00:51:13.510095"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.015270233154296875,
+        "timestamp": "2025-06-07T00:51:13.564126"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.01412510871887207,
+        "timestamp": "2025-06-07T00:51:13.615893"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.017640352249145508,
+        "timestamp": "2025-06-07T00:51:13.671770"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.014951229095458984,
+        "timestamp": "2025-06-07T00:51:13.726068"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.016989469528198242,
+        "timestamp": "2025-06-07T00:51:13.787757"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.016518831253051758,
+        "timestamp": "2025-06-07T00:51:13.843538"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.018002748489379883,
+        "timestamp": "2025-06-07T00:51:13.902781"
+    },
+    {
+        "function": "predict_from_image",
+        "execution_time": 0.017089128494262695,
+        "timestamp": "2025-06-07T00:51:13.958279"
+    }
+]

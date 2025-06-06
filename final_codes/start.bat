@@ -1,0 +1,1 @@
+python main.py --input_method="video_file" --video_path="./tests/test_vid.mp4" --model_path="./checkpoints/best_fastsam.pt" --model_type="fastsam" --save_output_video 

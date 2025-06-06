@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 from typing import Union, Literal
-
+from datetime import datetime
 from ultralytics.utils.instance import Bboxes
 
 from Inputs import (
@@ -14,6 +14,41 @@ from Inputs import (
     VideoFileInputs,
     InputFactory,
 )
+
+EXECUTE_TIME = datetime.now().strftime('%Y%m%d_%H%M%S')
+TIME_IT_CACHE = []
+
+
+def time_it_func(func):
+    """
+    装饰器，用于计算函数执行时间
+    """
+
+    def wrapper(*args, **kwargs):
+        import time
+
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        save_path = Path(f"./analyze/analysis_{EXECUTE_TIME}.json").absolute()
+        analysis_data = {
+            "function": func.__name__,
+            "execution_time": end_time - start_time,
+            "timestamp": datetime.now().isoformat(),
+        }
+        if len(TIME_IT_CACHE) > 100:
+            # 每100次调用保存一次
+            with open(save_path, 'w') as f:
+                import json
+
+                json.dump(TIME_IT_CACHE, f, indent=4)
+            TIME_IT_CACHE.clear()
+        else:
+            # 临时保存到内存中
+            TIME_IT_CACHE.append(analysis_data)
+        return result
+
+    return wrapper
 
 
 class Models:
@@ -64,6 +99,7 @@ class Models:
             )
         print(f"Model loaded from {model_path} with type {self.model_type}")
 
+    @time_it_func
     def predict_from_image(self, image: np.ndarray, resize: bool = True):
         """
         进行预测
@@ -217,6 +253,7 @@ class Models:
             print("No image provider available")
             return None
 
+        # avg_fps = 0
         window_name = "AI Model Prediction"
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
 
@@ -300,7 +337,7 @@ class Models:
                                 fps_counter = current_time
 
                             # 在图像上显示帧数和FPS信息
-                            info_text = f"Frame: {frame_count}"
+                            info_text = f"Frame: {frame_count}  FPS: {fps:.2f}"
                             cv2.putText(
                                 annotated_image,
                                 info_text,
@@ -367,18 +404,8 @@ def main(args):
     model = Models(
         model_path=args.model_path, model_type=args.model_type, image_provider=inputs
     )
-    # if not inputs.is_stream():
-    #     results = model.predict_from_image(inputs.get_input_image())
-    #     if results:
-    #         print(f"Prediction results: {results}")
-    # else:
-    #     while model.is_running:
-    #         image = next(model.get_image())
-    #         if image is not None:
-    #             results = model.predict_from_image(image)
-    #             if results:
-    #                 print(f"Prediction results: {results}")
-    model.show_prediction(save_video=True)
+
+    model.show_prediction(save_video=args.save_output_video)
     model.release_model()
 
 
@@ -394,7 +421,9 @@ if __name__ == "__main__":
         help="Input method for the model.",
     )
     parser.add_argument(
-        "--window_name", type=str, help="Name of the window to capture."
+        "--window_name",
+        type=str,
+        help="Name of the window to capture. e.g., 'window:Google Chrome'",
     )
     parser.add_argument(
         "--fps", type=int, default=30, help="Frames per second for capture."
@@ -414,6 +443,16 @@ if __name__ == "__main__":
         default="yolo",
         help="Type of the model to use.",
     )
-
+    parser.add_argument(
+        "--save_output_video",
+        action="store_true",
+        default=True,
+        help="Save the output video with predictions.",
+    )
     args = parser.parse_args()
     main(args)
+    if TIME_IT_CACHE and len(TIME_IT_CACHE) > 0:
+        with open(Path(f"./analyze/analysis_{EXECUTE_TIME}.json").absolute(), 'w') as f:
+            import json
+
+            json.dump(TIME_IT_CACHE, f, indent=4)
