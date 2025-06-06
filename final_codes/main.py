@@ -99,6 +99,46 @@ class Models:
             )
         print(f"Model loaded from {model_path} with type {self.model_type}")
 
+    def prune_model(self, prune_percent: float = 0.1):
+        """
+        对模型进行剪枝
+        """
+        if self.model is None:
+            print("No model loaded to prune")
+            return
+
+        try:
+            import torch
+            import torch.nn.utils.prune as prune
+        except ImportError:
+            print("PyTorch is required for model pruning")
+            return
+
+        print(f"Starting model pruning with {prune_percent*100}% pruning rate...")
+
+        # 获取模型的所有参数
+        parameters_to_prune = []
+        for name, module in self.model.model.named_modules():
+            if isinstance(module, (torch.nn.Conv2d, torch.nn.Linear)):
+                parameters_to_prune.append((module, 'weight'))
+
+        if not parameters_to_prune:
+            print("No suitable layers found for pruning")
+            return
+
+        # 使用全局非结构化剪枝
+        prune.global_unstructured(
+            parameters_to_prune,
+            pruning_method=prune.L1Unstructured,
+            amount=prune_percent,
+        )
+
+        # 永久移除被剪枝的权重
+        for module, param_name in parameters_to_prune:
+            prune.remove(module, param_name)
+
+        print(f"Model pruning completed. Pruned {prune_percent*100}% of parameters.")
+
     @time_it_func
     def predict_from_image(self, image: np.ndarray, resize: bool = True):
         """
@@ -404,6 +444,8 @@ def main(args):
     model = Models(
         model_path=args.model_path, model_type=args.model_type, image_provider=inputs
     )
+    if args.prune_percent > 0:
+        model.prune_model(prune_percent=args.prune_percent)
 
     model.show_prediction(save_video=args.save_output_video)
     model.release_model()
@@ -442,6 +484,12 @@ if __name__ == "__main__":
         choices=["yolo", "rtdetr", "fastsam"],
         default="yolo",
         help="Type of the model to use.",
+    )
+    parser.add_argument(
+        "--prune_percent",
+        type=float,
+        default=0,
+        help="Pruning percent for the model.",
     )
     parser.add_argument(
         "--save_output_video",
