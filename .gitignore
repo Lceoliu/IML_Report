@@ -1,0 +1,5 @@
+*.log
+*.gz
+
+final_codes/.vscode/
+final_codes/__pycache__/
