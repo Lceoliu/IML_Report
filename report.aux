@@ -2,29 +2,68 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
-\@writefile{toc}{\contentsline {section}{\numberline {1}Submission of papers to NeurIPS 2023}{1}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Style}{1}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Retrieval of style files}{1}{subsection.1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Preprint option}{1}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}General formatting instructions}{2}{section.2}\protected@file@percent }
-\newlabel{gen_inst}{{2}{2}{General formatting instructions}{section.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Headings: first level}{2}{section.3}\protected@file@percent }
-\newlabel{headings}{{3}{2}{Headings: first level}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Headings: second level}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.1.1}Headings: third level}{2}{subsubsection.3.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Paragraphs}{2}{section*.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Citations, figures, tables, references}{2}{section.4}\protected@file@percent }
-\newlabel{others}{{4}{2}{Citations, figures, tables, references}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Citations within the text}{2}{subsection.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Sample figure caption.}}{3}{figure.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Footnotes}{3}{subsection.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Figures}{3}{subsection.4.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Sample table title}}{4}{table.1}\protected@file@percent }
-\newlabel{sample-table}{{1}{4}{Sample table title}{table.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Tables}{4}{subsection.4.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Math}{4}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Final instructions}{4}{subsection.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Preparing PDF files}{4}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Margins in \LaTeX  {}}{5}{subsection.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Supplementary Material}{5}{section.6}\protected@file@percent }
-\gdef \@abspage@last{5}
+\citation{neteaseAIEyes2024}
+\citation{vinyals2017starcraft,li2024multiagent}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{reis2024realtimeflyingobjectdetection}
+\citation{zhao2023fast}
+\citation{lv2023detrs}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Object Detection and Segmentation Models}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{YOLOv8}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{FastSAM}{2}{section*.2}\protected@file@percent }
+\citation{10.1145/3440840.3440857}
+\citation{santyasa_roboflow}
+\@writefile{toc}{\contentsline {paragraph}{RT-DETR}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Anti-Cheat Methods}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Traditional Anti-Cheat Methods}{3}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Deep Learning for Anti-Cheat}{3}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{3}{section.3}\protected@file@percent }
+\newlabel{method}{{3}{3}{Method}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Data Collection and Annotation}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Training}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Loading the Dataset and Models}{3}{section*.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Training with Parameters}{3}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Loss Function}{3}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Model Fine-Tuning}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Transfer Learning with Frozen Layers}{4}{section*.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Architecture of YOLOv8. We freeze the backbone layers only.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:yolo-arch}{{1}{4}{Architecture of YOLOv8. We freeze the backbone layers only}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Architecture of FastSAM. We freeze the backbone layers only.}}{4}{figure.2}\protected@file@percent }
+\newlabel{fig:fastsam-arch}{{2}{4}{Architecture of FastSAM. We freeze the backbone layers only}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Architecture of RT-DETR. We freeze the backbone layers only.}}{4}{figure.3}\protected@file@percent }
+\newlabel{fig:rt-detr-arch}{{3}{4}{Architecture of RT-DETR. We freeze the backbone layers only}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Three images arranged horizontally.}}{4}{figure.4}\protected@file@percent }
+\newlabel{fig:three_horizontal_images}{{4}{4}{Three images arranged horizontally}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Dataset Augmentation}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Model Evaluation}{4}{subsection.3.5}\protected@file@percent }
+\bibstyle{unsrt}
+\bibdata{reference}
+\bibcite{neteaseAIEyes2024}{{1}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Real-Time Inference Pipeline}{5}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Different Input Sources}{5}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Different Model Types}{5}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Prune}{5}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Results}{5}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{5}{section.4}\protected@file@percent }
+\newlabel{experiments}{{4}{5}{Experiments}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experimental Equipment}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Tests and Results}{5}{subsection.4.2}\protected@file@percent }
+\bibcite{vinyals2017starcraft}{{2}{}{{}}{{}}}
+\bibcite{li2024multiagent}{{3}{}{{}}{{}}}
+\bibcite{reis2024realtimeflyingobjectdetection}{{4}{}{{}}{{}}}
+\bibcite{zhao2023fast}{{5}{}{{}}{{}}}
+\bibcite{lv2023detrs}{{6}{}{{}}{{}}}
+\bibcite{10.1145/3440840.3440857}{{7}{}{{}}{{}}}
+\bibcite{santyasa_roboflow}{{8}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Performance comparison of different models.}}{6}{table.1}\protected@file@percent }
+\newlabel{tab:model_performance}{{1}{6}{Performance comparison of different models}{table.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Performance comparison of different models.}}{6}{table.2}\protected@file@percent }
+\newlabel{tab:corner_case_performance}{{2}{6}{Performance comparison of different models}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{6}{section.5}\protected@file@percent }
+\newlabel{conclusion}{{5}{6}{Conclusion}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Appendix}{6}{section.6}\protected@file@percent }
+\newlabel{appendix}{{6}{6}{Appendix}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Training Results}{6}{subsection.6.1}\protected@file@percent }
+\gdef \@abspage@last{6}

@@ -7,7 +7,7 @@
 
 
 % ready for submission
-\usepackage{neurips_2023}
+\usepackage[final]{neurips_2023}
 
 
 % to compile a preprint version, e.g., for submission to arXiv, add add the
@@ -32,9 +32,17 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{listings}
 
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
 
-\title{Formatting Instructions For NeurIPS 2023}
+\title{Realtime Object-Detection In Gaming: Fine-Tuning for Valorant}
 
 
 % The \author macro works with any number of authors. There are two commands
@@ -46,35 +54,22 @@
 % \AND instead of \And before the third author name.
 
 
-\author{%
-  David S.~Hippocampus\thanks{Use footnote for providing further information
-    about author (webpage, alternative address)---\emph{not} for acknowledging
-    funding agencies.} \\
-  Department of Computer Science\\
-  Cranberry-Lemon University\\
-  Pittsburgh, PA 15213 \\
-  \texttt{hippo@cs.cranberry-lemon.edu} \\
-  % examples of more authors
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \AND
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
-  % \And
-  % Coauthor \\
-  % Affiliation \\
-  % Address \\
-  % \texttt{email} \\
+\author{
+  Liu Chang \thanks{
+    Group Leader, pipeline implementation, model training, presenter, and paper writer.
+  }\\
+  ShanghaiTech University\\
+  \texttt{liuchang2023@shanghaitech.edu.cn} \\
+  \And
+  Liu Changyu \thanks{
+    Model training, fine-tuning, and evaluation.
+  }\\
+  ShanghaiTech University\\
+  \texttt{liuchy2023@shanghaitech.edu.cn} \\
+  \And
+  Qiu Zhaolin\\
+  ShanghaiTech University\\
+  \texttt{qiuzhl2023@shanghaitech.edu.cn} \\
 }
 
 
@@ -85,402 +80,213 @@
 
 
 \begin{abstract}
-  The abstract paragraph should be indented \nicefrac{1}{2}~inch (3~picas) on
-  both the left- and right-hand margins. Use 10~point type, with a vertical
-  spacing (leading) of 11~points.  The word \textbf{Abstract} must be centered,
-  bold, and in point size 12. Two line spaces precede the abstract. The abstract
-  must be limited to one paragraph.
+
 \end{abstract}
 
 
-\section{Submission of papers to NeurIPS 2023}
+\section{Introduction}
 
 
-Please read the instructions below carefully and follow them faithfully. \textbf{Important:} This year the checklist will be submitted separately from the main paper in OpenReview, please review it well ahead of the submission deadline: \url{https://neurips.cc/public/guides/PaperChecklist}.
+The confluence of deep learning and interactive entertainment has catalyzed a paradigm shift, unlocking possibilities that were once the domain of science fiction. Video games, now a dominant global cultural and economic force, represent a uniquely challenging and fertile ground for the application of real-time computer vision. The ability to perceive, understand, and react to dynamic, visually complex game environments in milliseconds is a cornerstone of human play. Replicating this capability with artificial intelligence opens a dual-edged sword: it presents an unprecedented threat to competitive integrity while simultaneously offering powerful new tools for accessibility and intelligent agent design.
 
+A significant and pressing challenge emerging from this technological advancement is the rise of vision-based cheating in competitive games, particularly in the First-Person Shooter (FPS) genre. Traditionally, cheating involved direct memory injection or network packet manipulation—methods that could be reliably identified by anti-cheat software scanning for unauthorized code and memory access. However, modern vision-based cheats operate on a fundamentally different principle. By capturing the game's video output—the same visual information a human player sees—and processing it with a convolutional neural network (CNN), these systems can identify and aim at opponents with superhuman precision. Because they interface with the game solely through screen capture and simulated mouse/keyboard inputs, they mimic legitimate human interaction, rendering them exceptionally difficult to detect with conventional anti-cheat mechanisms. This new class of "AI aimbots" poses a profound threat to the fairness and long-term viability of the multi-billion dollar esports and competitive gaming industry.
 
-\subsection{Style}
+Conversely, the very same technology holds immense promise for positive transformation. Vision AI is proving to be a powerful enabler of game accessibility, helping to break down barriers for players with disabilities. A recent, award-winning example is the work by NetEase, which utilized vision AI to provide real-time screen narration and touch-based assistance, making complex game interfaces accessible to visually impaired players \cite{neteaseAIEyes2024}. This application highlights a path where real-time object and UI element detection can be harnessed to create more inclusive gaming experiences, from automated highlighting of critical game objects to providing auditory cues for environmental threats.
 
+Furthermore, the integration of vision is poised to revolutionize the design of in-game Non-Player Characters (NPCs). For decades, game AI has been largely dependent on brittle and predictable systems like behavior trees and finite state machines, which often rely on privileged access to the game engine's internal state. This leads to enemy behaviors that, while functional, lack the adaptability and emergent complexity of human opponents. In contrast, an AI agent that perceives the game world through vision—akin to a human player—can be trained via reinforcement learning (RL) to develop sophisticated, human-like strategies. Seminal work in complex games like StarCraft II, often driven by the player community, has demonstrated that visually-grounded RL agents can achieve grandmaster-level performance, showcasing a future where NPCs can provide more engaging, challenging, and realistic interactions \cite{vinyals2017starcraft,li2024multiagent}.
 
-Papers to be submitted to NeurIPS 2023 must be prepared according to the
-instructions presented here. Papers may only be up to {\bf nine} pages long,
-including figures. Additional pages \emph{containing only acknowledgments and
-references} are allowed. Papers that exceed the page limit will not be
-reviewed, or in any other way considered for presentation at the conference.
+Despite this clear duality, a systematic and public investigation into the practical performance of modern object detection models within the real-time constraints of a live game environment is lacking. The core challenge is multifaceted: any viable system, whether for nefarious or beneficial purposes, must achieve high accuracy while maintaining minimal inference latency and a low computational footprint to avoid disrupting the game's performance. This necessitates a move beyond general-purpose benchmarks to a specific analysis of lightweight, efficient architectures operating under the unique visual conditions and temporal demands of gaming.
 
-
-The margins in 2023 are the same as those in previous years.
-
-
-Authors are required to use the NeurIPS \LaTeX{} style files obtainable at the
-NeurIPS website as indicated below. Please make sure you use the current files
-and not previous versions. Tweaking the style files may be grounds for
-rejection.
-
-
-\subsection{Retrieval of style files}
-
-
-The style files for NeurIPS and other conference information are available on
-the website at
-\begin{center}
-  \url{http://www.neurips.cc/}
-\end{center}
-The file \verb+neurips_2023.pdf+ contains these instructions and illustrates the
-various formatting requirements your NeurIPS paper must satisfy.
-
-
-The only supported style file for NeurIPS 2023 is \verb+neurips_2023.sty+,
-rewritten for \LaTeXe{}.  \textbf{Previous style files for \LaTeX{} 2.09,
-  Microsoft Word, and RTF are no longer supported!}
-
-
-The \LaTeX{} style file contains three optional arguments: \verb+final+, which
-creates a camera-ready copy, \verb+preprint+, which creates a preprint for
-submission to, e.g., arXiv, and \verb+nonatbib+, which will not load the
-\verb+natbib+ package for you in case of package clash.
-
-
-\paragraph{Preprint option}
-If you wish to post a preprint of your work online, e.g., on arXiv, using the
-NeurIPS style, please use the \verb+preprint+ option. This will create a
-nonanonymized version of your work with the text ``Preprint. Work in progress.''
-in the footer. This version may be distributed as you see fit, as long as you do not say which conference it was submitted to. Please \textbf{do
-  not} use the \verb+final+ option, which should \textbf{only} be used for
-papers accepted to NeurIPS. 
-
-
-At submission time, please omit the \verb+final+ and \verb+preprint+
-options. This will anonymize your submission and add line numbers to aid
-review. Please do \emph{not} refer to these line numbers in your paper as they
-will be removed during generation of camera-ready copies.
-
-
-The file \verb+neurips_2023.tex+ may be used as a ``shell'' for writing your
-paper. All you have to do is replace the author, title, abstract, and text of
-the paper with your own.
-
-
-The formatting instructions contained in these style files are summarized in
-Sections \ref{gen_inst}, \ref{headings}, and \ref{others} below.
-
-
-\section{General formatting instructions}
-\label{gen_inst}
-
-
-The text must be confined within a rectangle 5.5~inches (33~picas) wide and
-9~inches (54~picas) long. The left margin is 1.5~inch (9~picas).  Use 10~point
-type with a vertical spacing (leading) of 11~points.  Times New Roman is the
-preferred typeface throughout, and will be selected for you by default.
-Paragraphs are separated by \nicefrac{1}{2}~line space (5.5 points), with no
-indentation.
-
-
-The paper title should be 17~point, initial caps/lower case, bold, centered
-between two horizontal rules. The top rule should be 4~points thick and the
-bottom rule should be 1~point thick. Allow \nicefrac{1}{4}~inch space above and
-below the title to rules. All pages should start at 1~inch (6~picas) from the
-top of the page.
-
-
-For the final version, authors' names are set in boldface, and each name is
-centered above the corresponding address. The lead author's name is to be listed
-first (left-most), and the co-authors' names (if different address) are set to
-follow. If there is only one co-author, list both author and co-author side by
-side.
-
-
-Please pay special attention to the instructions in Section \ref{others}
-regarding figures, tables, acknowledgments, and references.
-
-
-\section{Headings: first level}
-\label{headings}
-
-
-All headings should be lower case (except for first word and proper nouns),
-flush left, and bold.
-
-
-First-level headings should be in 12-point type.
-
-
-\subsection{Headings: second level}
-
-
-Second-level headings should be in 10-point type.
-
-
-\subsubsection{Headings: third level}
-
-
-Third-level headings should be in 10-point type.
-
-
-\paragraph{Paragraphs}
-
-
-There is also a \verb+\paragraph+ command available, which sets the heading in
-bold, flush left, and inline with the text, with the heading followed by 1\,em
-of space.
-
-
-\section{Citations, figures, tables, references}
-\label{others}
-
-
-These instructions apply to everyone.
-
-
-\subsection{Citations within the text}
-
-
-The \verb+natbib+ package will be loaded for you by default.  Citations may be
-author/year or numeric, as long as you maintain internal consistency.  As to the
-format of the references themselves, any style is acceptable as long as it is
-used consistently.
-
-
-The documentation for \verb+natbib+ may be found at
-\begin{center}
-  \url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf}
-\end{center}
-Of note is the command \verb+\citet+, which produces citations appropriate for
-use in inline text.  For example,
-\begin{verbatim}
-   \citet{hasselmo} investigated\dots
-\end{verbatim}
-produces
-\begin{quote}
-  Hasselmo, et al.\ (1995) investigated\dots
-\end{quote}
-
-
-If you wish to load the \verb+natbib+ package with options, you may add the
-following before loading the \verb+neurips_2023+ package:
-\begin{verbatim}
-   \PassOptionsToPackage{options}{natbib}
-\end{verbatim}
-
-
-If \verb+natbib+ clashes with another package you load, you can add the optional
-argument \verb+nonatbib+ when loading the style file:
-\begin{verbatim}
-   \usepackage[nonatbib]{neurips_2023}
-\end{verbatim}
-
-
-As submission is double blind, refer to your own published work in the third
-person. That is, use ``In the previous work of Jones et al.\ [4],'' not ``In our
-previous work [4].'' If you cite your other papers that are not widely available
-(e.g., a journal paper under review), use anonymous author names in the
-citation, e.g., an author of the form ``A.\ Anonymous'' and include a copy of the anonymized paper in the supplementary material.
-
-
-\subsection{Footnotes}
-
-
-Footnotes should be used sparingly.  If you do require a footnote, indicate
-footnotes with a number\footnote{Sample of the first footnote.} in the
-text. Place the footnotes at the bottom of the page on which they appear.
-Precede the footnote with a horizontal rule of 2~inches (12~picas).
-
-
-Note that footnotes are properly typeset \emph{after} punctuation
-marks.\footnote{As in this example.}
-
-
-\subsection{Figures}
-
-
-\begin{figure}
-  \centering
-  \fbox{\rule[-.5cm]{0cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-  \caption{Sample figure caption.}
-\end{figure}
-
-
-All artwork must be neat, clean, and legible. Lines should be dark enough for
-purposes of reproduction. The figure number and caption always appear after the
-figure. Place one line space before the figure caption and one line space after
-the figure. The figure caption should be lower case (except for first word and
-proper nouns); figures are numbered consecutively.
-
-
-You may use color figures.  However, it is best for the figure captions and the
-paper body to be legible if the paper is printed in either black/white or in
-color.
-
-
-\subsection{Tables}
-
-
-All tables must be centered, neat, clean and legible.  The table number and
-title always appear before the table.  See Table~\ref{sample-table}.
-
-
-Place one line space before the table title, one line space after the
-table title, and one line space after the table. The table title must
-be lower case (except for first word and proper nouns); tables are
-numbered consecutively.
-
-
-Note that publication-quality tables \emph{do not contain vertical rules.} We
-strongly suggest the use of the \verb+booktabs+ package, which allows for
-typesetting high-quality, professional tables:
-\begin{center}
-  \url{https://www.ctan.org/pkg/booktabs}
-\end{center}
-This package was used to typeset Table~\ref{sample-table}.
-
-
-\begin{table}
-  \caption{Sample table title}
-  \label{sample-table}
-  \centering
-  \begin{tabular}{lll}
-    \toprule
-    \multicolumn{2}{c}{Part}                   \\
-    \cmidrule(r){1-2}
-    Name     & Description     & Size ($\mu$m) \\
-    \midrule
-    Dendrite & Input terminal  & $\sim$100     \\
-    Axon     & Output terminal & $\sim$10      \\
-    Soma     & Cell body       & up to $10^6$  \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\subsection{Math}
-Note that display math in bare TeX commands will not create correct line numbers for submission. Please use LaTeX (or AMSTeX) commands for unnumbered display math. (You really shouldn't be using \$\$ anyway; see \url{https://tex.stackexchange.com/questions/503/why-is-preferable-to} and \url{https://tex.stackexchange.com/questions/40492/what-are-the-differences-between-align-equation-and-displaymath} for more information.)
-
-\subsection{Final instructions}
-
-Do not change any aspects of the formatting parameters in the style files.  In
-particular, do not modify the width or length of the rectangle the text should
-fit into, and do not change font sizes (except perhaps in the
-\textbf{References} section; see below). Please note that pages should be
-numbered.
-
-
-\section{Preparing PDF files}
-
-
-Please prepare submission files with paper size ``US Letter,'' and not, for
-example, ``A4.''
-
-
-Fonts were the main cause of problems in the past years. Your PDF file must only
-contain Type 1 or Embedded TrueType fonts. Here are a few instructions to
-achieve this.
-
+This paper aims to bridge this gap. We present a comprehensive study focused on implementing and evaluating a real-time object detection pipeline for video games. Our work is guided by the need to understand the capabilities of vision-based exploits while simultaneously laying the groundwork for positive innovation. Our primary contributions are as follows:
 
 \begin{itemize}
+\item[1.] \textbf{Feasibility Analysis of Vision-Based Cheating}: We develop and empirically evaluate a real-time object detection pipeline tailored for FPS games. By fine-tuning and deploying this system, we provide a quantitative baseline for the performance and viability of vision-based automated targeting, offering crucial data for the anti-cheat research community.
 
+\item[2.] \textbf{Benchmarking for Real-Time Performance}: We conduct a comparative analysis of several state-of-the-art, lightweight object detection architectures (e.g., YOLOv8, FastSAM, RT-DETR). We systematically benchmark their performance on custom-annotated game footage, focusing on the critical trade-offs between mean Average Precision (mAP), inference speed (FPS), and resource utilization on consumer-grade hardware.
 
-\item You should directly generate PDF files using \verb+pdflatex+.
-
-
-\item You can check which fonts a PDF files uses.  In Acrobat Reader, select the
-  menu Files$>$Document Properties$>$Fonts and select Show All Fonts. You can
-  also use the program \verb+pdffonts+ which comes with \verb+xpdf+ and is
-  available out-of-the-box on most Linux machines.
-
-
-\item \verb+xfig+ "patterned" shapes are implemented with bitmap fonts.  Use
-  "solid" shapes instead.
-
-
-\item The \verb+\bbold+ package almost always uses bitmap fonts.  You should use
-  the equivalent AMS Fonts:
-\begin{verbatim}
-   \usepackage{amsfonts}
-\end{verbatim}
-followed by, e.g., \verb+\mathbb{R}+, \verb+\mathbb{N}+, or \verb+\mathbb{C}+
-for $\mathbb{R}$, $\mathbb{N}$ or $\mathbb{C}$.  You can also use the following
-workaround for reals, natural and complex:
-\begin{verbatim}
-   \newcommand{\RR}{I\!\!R} %real numbers
-   \newcommand{\Nat}{I\!\!N} %natural numbers
-   \newcommand{\CC}{I\!\!\!\!C} %complex numbers
-\end{verbatim}
-Note that \verb+amsfonts+ is automatically loaded by the \verb+amssymb+ package.
-
-
+\item[3.] \textbf{A Foundation for Positive Applications}: We detail a streamlined methodology for data collection, annotation, and model fine-tuning. The resulting models and robust pipeline serve as a valuable reference and an open-source foundation for researchers and developers aiming to build assistive technologies for accessibility or to create the next generation of intelligent, vision-driven RL agents.
+Through this work, we provide a foundational study on the practical application of computer vision in modern gaming, addressing its most immediate challenges and illuminating its most promising opportunities.
 \end{itemize}
 
+\section{Related Work}
+\subsection{Object Detection and Segmentation Models}
 
-If your file contains type 3 fonts or non embedded TrueType fonts, we will ask
-you to fix it.
+\paragraph{YOLOv8} \cite{reis2024realtimeflyingobjectdetection} is one of the most popular object detection models of the YOLO (You Only Look Once) family, known for its speed and accuracy. It employs a single-stage architecture that predicts bounding boxes and class probabilities directly from full images in one evaluation, making it suitable for real-time applications. YOLOv8 introduces several improvements over its predecessors, including better feature extraction through CSPNet, enhanced anchor-free detection, and improved training techniques that allow it to achieve high mAP while maintaining low inference latency.
 
+\paragraph{FastSAM} \cite{zhao2023fast} is a lightweight segmentation model designed for real-time applications. It builds upon the principles of SAM (Segment Anything Model) but optimizes for speed and efficiency, making it suitable for scenarios where computational resources are limited. FastSAM uses a simplified architecture that reduces the number of parameters and computational overhead while maintaining competitive segmentation performance. Its design allows for quick inference times, making it ideal for applications requiring rapid object detection and segmentation.
 
-\subsection{Margins in \LaTeX{}}
-
-
-Most of the margin problems come from figures positioned by hand using
-\verb+\special+ or other commands. We suggest using the command
-\verb+\includegraphics+ from the \verb+graphicx+ package. Always specify the
-figure width as a multiple of the line width as in the example below:
-\begin{verbatim}
-   \usepackage[pdftex]{graphicx} ...
-   \includegraphics[width=0.8\linewidth]{myfile.pdf}
-\end{verbatim}
-See Section 4.4 in the graphics bundle documentation
-(\url{http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf})
+\paragraph{RT-DETR} \cite{lv2023detrs} (Real-Time DEtection TRansformer) is a real-time object detection model that adapts the DETR (DEtection TRansformer) architecture for faster inference. DETR revolutionized object detection by treating it as a direct set prediction problem, using transformers to model relationships between objects in an image. RT-DETR modifies this approach to improve speed, making it feasible for real-time applications. It achieves this by optimizing the transformer architecture and reducing the computational complexity, allowing for efficient processing of images while maintaining high accuracy.
 
 
-A number of width problems arise when \LaTeX{} cannot properly hyphenate a
-line. Please give LaTeX hyphenation hints using the \verb+\-+ command when
-necessary.
+\subsection{Anti-Cheat Methods}
+
+\paragraph{Traditional Anti-Cheat Methods} There are three main categories of traditional anti-cheat methods: player client detection, game network communication detection, and game remote server detection. However, these methods are often limited by the need for privileged access to the game client or server, making them ineffective against vision-based cheats that operate solely through screen capture and simulated inputs.
+
+\paragraph{Deep Learning for Anti-Cheat} To combat vision-based cheats, researchers have explored the use of deep learning techniques for cheat detection. For instance, Spijkerman and Marie Ehlers \cite{10.1145/3440840.3440857} applied Support Vector Machines (SVMs), decision trees, and Naive Bayes machine learning models to analyze players' mouse and keyboard operations. By integrating learning features into SVM models, they achieved superior cheating detection results. However, relying solely on SVMs for cheating detection may overlook crucial information such as players' aiming frequency, hit rates, and pre-aim positions.
+
+\section{Method}
+\label{method}
+
+\subsection{Data Collection and Annotation}
+
+We collected a dataset of game \textit{Valorant} from Santyasa dataset from Roboflow \cite{santyasa_roboflow}, which contains 3771 images of various game scenes and annotations of enemy heads and bodies. The annotations are in the form of bounding boxes, which fit the COCO format. The dataset is split into training, validation, and test sets, with 80\% for training, 10\% for validation, and 10\% for testing.
+
+Also, we collected a corner case dataset of 100 images from gaming records, where the players are at tricky angles or positions, such as the edge of the screen, behind obstacles or inside a smoke grenade. This dataset is used to test the robustness of the model in real-time scenarios.
+
+\subsection{Training}
+
+As mentioned, we will fine-tune three different object detection models: YOLOv8, FastSAM, and RT-DETR. The training process involves the following steps:
+
+\paragraph{Loading the Dataset and Models} We load the training and validation datasets using our custom dataset loader. Then we load the pre-trained weights of the models we want to fine-tune. The pre-trained weights are obtained from the ultralytics repository.
+
+\paragraph{Training with Parameters} We adjust the training parameters such as learning rate, batch size, number of epochs, and optimizer. The learning rate is set to 0.01, the batch size is set to 16, and the number of epochs is set to 100. We use the Auto Optimizer from the ultralytics repository, which automatically selects the best optimizer for the model. The training results can be seen in Section \ref{appendix}.
+
+\paragraph{Loss Function} The default loss function for YOLOv8 is
+$$
+\mathcal{L}_{YOLO} = \alpha_{box}\mathcal{L}_{box} + \alpha_{cls}\mathcal{L}_{cls} + \alpha_{dfl}\mathcal{L}_{dfl} 
+$$
+where $\mathcal{L}_{box}$ is the bounding box regression loss, $\mathcal{L}_{cls}$ is the classification loss, and $\mathcal{L}_{dfl}$ is the distribution focal loss. The hyperparameters $\alpha_{box}$, $\alpha_{cls}$, and $\alpha_{dfl}$ are set to 9.0, 0.3, and 1.8 respectively.
+
+\subsection{Model Fine-Tuning}
+
+\paragraph{Transfer Learning with Frozen Layers} We apply transfer learning by freezing the initial layers of the models and only training the last few layers. This allows us to leverage the pre-trained weights while adapting the models to our specific dataset. The frozen layers are determined based on the model architectures. For YOLOv8, we freeze the first 10 backbone and feature extract layers, while for FastSAM and RT-DETR, we freeze the first 5 backbone layers. This helps to retain the general features learned from the pre-trained models while fine-tuning them with a faster convergence.
 
 
-\begin{ack}
-Use unnumbered first level headings for the acknowledgments. All acknowledgments
-go at the end of the paper before the list of references. Moreover, you are required to declare
-funding (financial activities supporting the submitted work) and competing interests (related financial activities outside the submitted work).
-More information about this disclosure can be found at: \url{https://neurips.cc/Conferences/2023/PaperInformation/FundingDisclosure}.
+\begin{figure}[htbp]
+  \centering
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/yolo-arch.jpg}
+    \caption{Architecture of YOLOv8. We freeze the backbone layers only.}
+    \label{fig:yolo-arch}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{0.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/fastsam-arch.png}
+    \caption{Architecture of FastSAM. We freeze the backbone layers only.}
+    \label{fig:fastsam-arch}
+  \end{minipage}%
+
+  \begin{minipage}{0.8\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/rtdetr-arch.png}
+    \caption{Architecture of RT-DETR. We freeze the backbone layers only.}
+    \label{fig:rt-detr-arch}
+  \end{minipage}
+  \caption{Three images arranged horizontally.}
+  \label{fig:three_horizontal_images}
+\end{figure}
+
+\subsection{Dataset Augmentation}
+To enhance the robustness of our models, we apply various data augmentation techniques during training. These include:
+\begin{itemize}
+\item \textbf{Random Rotation}: Randomly rotating the images in $[-15^{\circ}, 15^{\circ}]$ to simulate different viewing angles.
+\item \textbf{Noise}: Adding random Gaussian noise to the images to simulate different lighting conditions and camera quality.
+\item \textbf{Brightness and Contrast Adjustment}: Randomly adjusting the brightness and contrast of the images in $[0.85, 1.15]$ range to simulate different lighting conditions.
+\end{itemize}
+Therefore, the total number of training images is increased to $5934$.
+
+\subsection{Model Evaluation}
+
+The metrics used to evaluate the performance of the models are:
+\begin{itemize}
+  \item \textbf{Precision}:   This metric measures the accuracy of the model: 
+  $$
+  \text{Precision} = \frac{TP}{TP + FP}
+  $$
+  where $TP$ is the number of true positives (correctly detected objects), and $FP$ is the number of false positives (incorrectly detected objects). 
+  \item \textbf{Recall}: This metric measures the ability of the model to find all the relevant objects. The way to calculate recall is
+  $$
+  \text{Recall} = \frac{TP}{TP + FN}
+  $$
+  where $FN$ is the number of false negatives (missed objects). Recall indicates how many of the relevant objects were actually detected.
+  \item \textbf{F1 Score}: This metric combines precision and recall into a single score. The way to calculate F1 score is
+  $$
+  \text{F1 Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+  $$
+  The F1 Score provides a balance between precision and recall, especially when the class distribution is imbalanced.
+  \item \textbf{Mean Average Precision (mAP)}: This metric measures the accuracy of the model in detecting objects. It is calculated as the average precision across all classes, taking into account both precision and recall.
+\end{itemize}
+
+\subsection{Real-Time Inference Pipeline}
+
+\paragraph{Different Input Sources} The pipeline supports different input sources, including video files, images, and live window capture. Use the command argument '--input\_method' to specify the input source. 
+
+\paragraph{Different Model Types} The pipeline supports different model types, including YOLOv8, FastSAM, and RT-DETR. Use the command argument '--model\_type' to specify the model type.
+
+\paragraph{Prune} The pipeline allows for pruning the model to reduce its size and improve inference speed. Using command argument '--prune\_percent=0.3' will prune 30\% of the model's parameters.
+
+\paragraph{Results} See results in Section \ref{appendix}
+
+\section{Experiments}
+\label{experiments}
+
+\subsection{Experimental Equipment}
+
+The experiments were conducted both on a cluster of NVIDIA 3090 GPUs and on a PC with a NVIDIA RTX 4090 GPU. 
+
+\subsection{Tests and Results}
+
+We conducted a series of tests to evaluate the performance of the models from their baseline to the fine-tuned version. The tests were conducted on the same dataset, and the results are shown in Table \ref{tab:model_performance}. The $^*$ indicates the frozen layers of the model. 
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c|c|c|c}
+    \hline
+    Model & Epochs & Train Time(s) & \#Params & Precision & Recall & F1-score & AP$^{50}$ & AP$^{50-95}$ \\
+    \hline
+    YOLOv8 & 0 & 0 & 6.9M & 0.001 & 0.041 & 0.0019 & 0.0004 & 0 \\
+    YOLOv8 & 100 &  & 6.9M &  &  &  &  &  \\
+    YOLOv8$^*$ & 100 & 8904.2 & 6.9M & 0.7664 & 0.5825 & 0.6706 & 0.6478 & 0.3160 \\
+    FastSAM & 0 & 0 & 72.2M & 0.0002 & 0.052 & 0.0004 & 0.0001 & 0\\
+    FastSAM & 100 & 8750.78 & 72.2M & 0.7799 & 0.7991 & 0.7894 & 0.8620 & 0.4112 \\
+    FastSAM$^*$ & 100 & 8050.18 & 72.2M & 0.8667 & 0.5657 & 0.6846 & 0.8548 & 0.3950 \\
+    RT-DETR & 0 & 0 & 45M & 0.173 & 0.168 & 0.171 & 0.095 & 0.046 \\
+    RT-DETR & 100 & 10284.6 & 45M & 0.619 & 0.483 & 0.543 & 0.465 & 0.1829 \\
+    RT-DETR$^*$ & 100 & 9700.3 & 45M & 0.667 & 0.360 & 0.467 & 0.375 & 0.170 \\
+    \hline
+  \end{tabular}
+  \caption{Performance comparison of different models.}
+  \label{tab:model_performance}
+\end{table}
+
+Then we add our corner case dataset to the training set and fine-tune the original models with the same parameters again. We evaluate the performance on the corner case test set, and compairing with the best models shown in the Table \ref{tab:model_performance} above, we can see that the performance of the models trained on mixed dataset is significantly improved. The results are shown in Table \ref{tab:corner_case_performance}. The $^*$ indicates the models are trained with the corner case dataset.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c|c}
+    \hline
+    Model & Epochs & Precision & Recall & F1-score & AP$^{50}$ & AP$^{50-95}$ \\
+    \hline
+    YOLOv8 & 100 &  &  &  &  &  \\
+    YOLOv8$^*$ & 100  &  &  &  &  &  \\
+    FastSAM & 100  & 0.011  & 0.030 & 0.016 & 0.0071 & 0.0036 \\
+    FastSAM$^*$ & 100  & 0.829 & 0.451 & 0.584 & 0.497 & 0.206 \\
+    RT-DETR & 100  & 0.0005 & 0.0627 & 9.99e-04 & 0.0004 & 5.29e-05 \\
+    RT-DETR$^*$ & 100  & 0.552 & 0.539 & 0.545 & 0.476 & 0.253 \\
+    \hline
+  \end{tabular}
+  \caption{Performance comparison of different models.}
+  \label{tab:corner_case_performance}
+\end{table}
+
+\section{Conclusion}
+\label{conclusion}
 
 
-Do {\bf not} include this section in the anonymized submission, only in the final paper. You can use the \texttt{ack} environment provided in the style file to autmoatically hide this section in the anonymized submission.
-\end{ack}
 
+\section{Appendix}
+\label{appendix}
 
-
-\section{Supplementary Material}
-
-Authors may wish to optionally include extra information (complete proofs, additional experiments and plots) in the appendix. All such materials should be part of the supplemental material (submitted separately) and should NOT be included in the main submission.
-
-
-\section*{References}
-
-
-References follow the acknowledgments in the camera-ready paper. Use unnumbered first-level heading for
-the references. Any choice of citation style is acceptable as long as you are
-consistent. It is permissible to reduce the font size to \verb+small+ (9 point)
-when listing the references.
-Note that the Reference section does not count towards the page limit.
-\medskip
+\subsection{Training Results}
 
 
 {
 \small
 
-
-[1] Alexander, J.A.\ \& Mozer, M.C.\ (1995) Template-based algorithms for
-connectionist rule extraction. In G.\ Tesauro, D.S.\ Touretzky and T.K.\ Leen
-(eds.), {\it Advances in Neural Information Processing Systems 7},
-pp.\ 609--616. Cambridge, MA: MIT Press.
-
-
-[2] Bower, J.M.\ \& Beeman, D.\ (1995) {\it The Book of GENESIS: Exploring
-  Realistic Neural Models with the GEneral NEural SImulation System.}  New York:
-TELOS/Springer--Verlag.
-
-
-[3] Hasselmo, M.E., Schnell, E.\ \& Barkai, E.\ (1995) Dynamics of learning and
-recall at excitatory recurrent synapses and cholinergic modulation in rat
-hippocampal region CA3. {\it Journal of Neuroscience} {\bf 15}(7):5249-5262.
+\bibliographystyle{unsrt}
+\bibliography{reference}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

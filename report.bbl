@@ -1,0 +1,47 @@
+\begin{thebibliography}{1}
+
+\bibitem{neteaseAIEyes2024}
+{NetEase Games}.
+\newblock Ai eyes: Enhancing visual accessibility using ai, 2024.
+\newblock Winner at iF Design Award 2024.
+
+\bibitem{vinyals2017starcraft}
+Oriol Vinyals, Timo Ewalds, Sergey Bartunov, Petko Georgiev, Alexander~Sasha
+  Vezhnevets, Michelle Yeo, Alireza Makhzani, Heinrich K{\"u}ttler, John
+  Agapiou, Julian Schrittwieser, et~al.
+\newblock Starcraft ii: A new challenge for reinforcement learning.
+\newblock {\em arXiv preprint arXiv:1708.04782}, 2017.
+
+\bibitem{li2024multiagent}
+Yanyan Li, Yijun Wang, and Yiwei Zhou.
+\newblock Multiagent deep reinforcement learning algorithms in starcraft ii: A
+  review.
+\newblock {\em IEEE Access}, 2024.
+
+\bibitem{reis2024realtimeflyingobjectdetection}
+Dillon Reis, Jordan Kupec, Jacqueline Hong, and Ahmad Daoudi.
+\newblock Real-time flying object detection with yolov8, 2024.
+
+\bibitem{zhao2023fast}
+Xu~Zhao, Wenchao Ding, Yongqi An, Yinglong Du, Tao Yu, Min Li, Ming Tang, and
+  Jinqiao Wang.
+\newblock Fast segment anything, 2023.
+
+\bibitem{lv2023detrs}
+Yian Zhao, Wenyu Lv, Shangliang Xu, Jinman Wei, Guanzhong Wang, Qingqing Dang,
+  Yi~Liu, and Jie Chen.
+\newblock Detrs beat yolos on real-time object detection, 2023.
+
+\bibitem{10.1145/3440840.3440857}
+Ruan Spijkerman and Elizabeth Marie~Ehlers.
+\newblock Cheat detection in a multiplayer first-person shooter using
+  artificial intelligence tools.
+\newblock In {\em Proceedings of the 2020 3rd International Conference on
+  Computational Intelligence and Intelligent Systems}, CIIS '20, page 87–92,
+  New York, NY, USA, 2021. Association for Computing Machinery.
+
+\bibitem{santyasa_roboflow}
+{Roboflow Community}.
+\newblock Santyasa dataset, 2021.
+
+\end{thebibliography}
